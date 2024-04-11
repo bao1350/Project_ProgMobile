@@ -1,10 +1,10 @@
-package com.example.project_progmobile
+package com.example.project_progmobile.Games
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
+import com.example.project_progmobile.R
 
 class MotionGame : ComponentActivity() {
 

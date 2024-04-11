@@ -1,11 +1,14 @@
-package com.example.project_progmobile
+package com.example.project_progmobile.Games
+
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.project_progmobile.R
 
 class TickGameActivity : ComponentActivity() {
 
@@ -48,11 +51,16 @@ class TickGameActivity : ComponentActivity() {
             }
 
             override fun onFinish() {
+                val resultIntent = Intent()
+                resultIntent.putExtra("score", shakeCount)
+                setResult(Activity.RESULT_OK, resultIntent)
+                finish()
                 gameStarted = false
                 shakeCountTextView.text = "Game over! Shake count: $shakeCount"
             }
         }.start()
     }
+
 
     override fun onUserInteraction() {
         super.onUserInteraction()

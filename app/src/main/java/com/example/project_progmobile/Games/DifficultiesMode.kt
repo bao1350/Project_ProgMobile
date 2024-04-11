@@ -1,9 +1,10 @@
-package com.example.project_progmobile
+package com.example.project_progmobile.Games
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
+import com.example.project_progmobile.R
 
 
 class DifficultiesMode : ComponentActivity() {

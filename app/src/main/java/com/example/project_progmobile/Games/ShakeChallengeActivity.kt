@@ -1,5 +1,6 @@
-package com.example.project_progmobile
+package com.example.project_progmobile.Games
 import android.content.Context
+import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -11,6 +12,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.example.project_progmobile.R
 
 class ShakeChallengeActivity : ComponentActivity() {
 
@@ -56,7 +58,7 @@ class ShakeChallengeActivity : ComponentActivity() {
         isGameRunning = true
 
         // Démarre le compte à rebours de 30 secondes
-        countdownTimer = object : CountDownTimer(30000, 1000) {
+        countdownTimer = object : CountDownTimer(10000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsLeft = millisUntilFinished / 1000
                 countdownTextView.text = "Temps restant: $secondsLeft s"
@@ -80,6 +82,11 @@ class ShakeChallengeActivity : ComponentActivity() {
         shakeDetector.stop()
         startButton.visibility = View.INVISIBLE // Cacher le bouton "Start"
         isGameRunning = false
+
+        val resultIntent = Intent()
+        resultIntent.putExtra("score", score)
+        setResult(RESULT_OK, resultIntent)
+        finish() // Terminer cette activité
     }
 
 

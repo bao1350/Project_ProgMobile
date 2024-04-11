@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_solo_mode"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenue dans le Mode Solo"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"/> <!-- Désactivation du texte Bienvenue dans le Mode Solo -->
+
+    <Button
+        android:id="@+id/btnStartChallenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Commencer le défi"
+        android:layout_below="@id/textViewTitle"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"/> <!-- Le bouton est visible par défaut -->
+
+    <Button
+        android:id="@+id/btnNextChallenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Commencer le prochain défi"
+        android:textSize="18sp"
+        android:layout_below="@id/textViewExplanation"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/textViewExplanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:layout_below="@id/btnStartChallenge"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>

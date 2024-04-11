@@ -1,10 +1,12 @@
-package com.example.project_progmobile
+package com.example.project_progmobile.Games
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.example.project_progmobile.MainActivity
+import com.example.project_progmobile.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -137,6 +139,11 @@ class GamesCapitales1 : ComponentActivity() {
         answerButton3.isEnabled = false
         answerButton4.isEnabled = false
         answeredAllQuestions = true
+
+        val resultIntent = Intent()
+        resultIntent.putExtra("score", totalScore)
+        setResult(RESULT_OK, resultIntent)
+        finish()
     }
 
     private fun highlightCorrectAnswer(correctAnswerIndex: Int) {
@@ -394,7 +401,7 @@ class GamesCapitales1 : ComponentActivity() {
             "Quelle est la capitale du Suriname?",
             listOf("Paramaribo", "Georgetown", "Kingston", "Port-au-Prince"),
             0
-        ) ,Question(
+        ) , Question(
                 "Quel est le pays le plus peuplé du monde?",
         listOf("Chine", "Inde", "États-Unis", "Brésil"),
         0

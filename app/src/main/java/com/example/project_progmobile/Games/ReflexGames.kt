@@ -1,4 +1,4 @@
-package com.example.project_progmobile
+package com.example.project_progmobile.Games
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.example.project_progmobile.R
 import kotlin.random.Random
 
 class ReflexGames : ComponentActivity() {
@@ -53,9 +54,11 @@ class ReflexGames : ComponentActivity() {
             Handler().postDelayed({
                 greenButton.visibility = View.VISIBLE
                 startTime = System.currentTimeMillis()
-                isReactionTimeRecorded = false // Réinitialiser l'enregistrement du temps de réaction
+                isReactionTimeRecorded =
+                    false // Réinitialiser l'enregistrement du temps de réaction
                 isGameStarted = true
-                redButton.visibility = View.INVISIBLE // Le bouton rouge disparaît lorsque le vert apparaît
+                redButton.visibility =
+                    View.INVISIBLE // Le bouton rouge disparaît lorsque le vert apparaît
             }, delayForGreen)
         }
 
@@ -68,12 +71,23 @@ class ReflexGames : ComponentActivity() {
                 timeTextView.visibility = View.VISIBLE
                 timeTextView.text = "$seconds seconds"
                 isReactionTimeRecorded = true // Marquer que le temps de réaction a été enregistré
-            }
-        }
 
+                        val resultIntent = Intent()
+                        resultIntent.putExtra("reactionTime", timeTextView.text.toString())
+                        setResult(RESULT_OK, resultIntent)
+                        finish() // Terminer cette activité
+
+                }
+
+            }
         redButton.setOnClickListener {
-            startActivity(Intent(this, ReflexGames::class.java))
-            finish() // Fermer l'écran actuel pour revenir à l'écran de départ
+
+            startActivity(Intent(this,ReflexGames::class.java))
         }
     }
-}
+        }
+
+
+
+
+
