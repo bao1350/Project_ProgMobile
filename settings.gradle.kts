@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Project_ProgMobile"
+rootProject.name = "test_bluetooth"
 include(":app")
  
