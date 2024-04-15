@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.test_bluetooth.R
 import java.util.Timer
 import java.util.TimerTask
 
