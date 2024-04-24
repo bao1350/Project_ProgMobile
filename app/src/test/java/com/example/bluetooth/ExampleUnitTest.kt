@@ -1,4 +1,4 @@
-package com.example.testjeu
+package com.example.bluetooth
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.testjeu.ui.theme
+package com.example.bluetooth.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
