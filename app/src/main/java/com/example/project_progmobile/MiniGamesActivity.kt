@@ -39,7 +39,6 @@ class MiniGamesActivity : ComponentActivity() {
                 1->startActivity(Intent(this, ReflexGames::class.java))
                 2->startActivity(Intent(this, TickGameActivity::class.java))
                 3->startActivity((Intent(this, ShakeChallengeActivity::class.java)))
-               // 4->startActivity(Intent(this,SoundGame::class.java))
                 4->startActivity((Intent(this, MotionGame::class.java)))
                 5->startActivity((Intent(this, Clickbutton::class.java)))
 
