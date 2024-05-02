@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.activity.ComponentActivity
+
+import com.example.project_progmobile.Games.Clickbutton
 import com.example.project_progmobile.Games.DifficultiesMode
 import com.example.project_progmobile.Games.MotionGame
 import com.example.project_progmobile.Games.ReflexGames
@@ -18,7 +20,7 @@ class MiniGamesActivity : ComponentActivity() {
         "Tick Game ",
         "Shake Challenge ",
         "Sound Game",
-        "Circle Challenge"
+        "Tap challenge"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +39,9 @@ class MiniGamesActivity : ComponentActivity() {
                 1->startActivity(Intent(this, ReflexGames::class.java))
                 2->startActivity(Intent(this, TickGameActivity::class.java))
                 3->startActivity((Intent(this, ShakeChallengeActivity::class.java)))
-                //4->startActivity(Intent(this,SoundGame::class.java))
-                5->startActivity((Intent(this, MotionGame::class.java)))
+               // 4->startActivity(Intent(this,SoundGame::class.java))
+                4->startActivity((Intent(this, MotionGame::class.java)))
+                5->startActivity((Intent(this, Clickbutton::class.java)))
 
 
 

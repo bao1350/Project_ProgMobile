@@ -17,6 +17,8 @@ class TickGameActivity : ComponentActivity() {
     private lateinit var startButton: Button
     private var shakeCount = 0
     private var gameStarted = false
+    private lateinit var timerTextView: TextView
+    private var countDownTimer: CountDownTimer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class TickGameActivity : ComponentActivity() {
         instructionsTextView = findViewById(R.id.instructionsTextView)
         shakeCountTextView = findViewById(R.id.shakeCountTextView)
         startButton = findViewById(R.id.startButton)
+        timerTextView = findViewById(R.id.timerTextView)
 
         // Configuration du clic sur le bouton "Start"
         startButton.setOnClickListener {
@@ -43,24 +46,26 @@ class TickGameActivity : ComponentActivity() {
         // Afficher le compteur de secousses
         shakeCountTextView.visibility = View.VISIBLE
         shakeCountTextView.text = "Shake count: $shakeCount"
-
+        timerTextView.visibility = View.VISIBLE
         // Lancer un compte à rebours de 10 secondes
-        object : CountDownTimer(10000, 1000) {
+
+        countDownTimer = object : CountDownTimer(10000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                // Ne rien faire à chaque tick du compte à rebours
+                val secondsRemaining = millisUntilFinished / 1000
+                timerTextView.text = "Timer: $secondsRemaining"
             }
 
             override fun onFinish() {
+
                 val resultIntent = Intent()
                 resultIntent.putExtra("score", shakeCount)
                 setResult(Activity.RESULT_OK, resultIntent)
                 finish()
                 gameStarted = false
-                shakeCountTextView.text = "Game over! Shake count: $shakeCount"
+                shakeCountTextView.text = "Shake count: $shakeCount"
             }
         }.start()
     }
-
 
     override fun onUserInteraction() {
         super.onUserInteraction()

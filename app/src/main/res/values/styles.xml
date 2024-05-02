@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+            <item name="android:textColor">@android:color/white</item> <!-- Couleur du texte -->
+            <item name="android:background">@drawable/button_background</item> <!-- Utilise une forme personnalisée comme arrière-plan -->
+            <item name="android:padding">12dp</item> <!-- Marge interne -->
+            <item name="android:layout_margin">8dp</item> <!-- Marge externe -->
+            <item name="android:stateListAnimator">@null</item> <!-- Désactive l'animation de l'état -->
+        </style>
+
+
+
+</resources>

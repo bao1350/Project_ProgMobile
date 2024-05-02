@@ -72,16 +72,15 @@ class ReflexGames : ComponentActivity() {
                 timeTextView.text = "$seconds seconds"
                 isReactionTimeRecorded = true // Marquer que le temps de réaction a été enregistré
 
-                        val resultIntent = Intent()
-                        resultIntent.putExtra("reactionTime", timeTextView.text.toString())
-                        setResult(RESULT_OK, resultIntent)
-                        finish() // Terminer cette activité
+                val resultIntent = Intent()
+                resultIntent.putExtra("score", seconds)
+                setResult(RESULT_OK, resultIntent)
+                finish() // Terminer cette activité
 
                 }
 
             }
         redButton.setOnClickListener {
-
             startActivity(Intent(this,ReflexGames::class.java))
         }
     }

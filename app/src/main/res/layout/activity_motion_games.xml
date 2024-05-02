@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Player ImageView -->
     <ImageView
         android:id="@+id/player"
         android:layout_width="wrap_content"
@@ -11,6 +12,72 @@
         android:src="@drawable/player"
         android:layout_gravity="center" />
 
+    <!-- Obstacle 1 -->
+    <ImageView
+        android:id="@+id/obstacle1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_light"
+        android:src="@drawable/obstacle" />
 
+    <!-- Obstacle 2 -->
+    <ImageView
+        android:id="@+id/obstacle2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_light"
+        android:src="@drawable/obstacle" />
+
+    <!-- Obstacle 3 -->
+    <ImageView
+        android:id="@+id/obstacle3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_light"
+        android:src="@drawable/obstacle" />
+
+    <!-- Obstacle 4 -->
+    <ImageView
+        android:id="@+id/obstacle4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_light"
+        android:src="@drawable/obstacle" />
+
+    <!-- Obstacle 5 -->
+    <ImageView
+        android:id="@+id/obstacle5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_light"
+        android:src="@drawable/obstacle" />
+
+    <!-- Goal ImageView -->
+    <ImageView
+        android:id="@+id/goal"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_green_light"
+        android:src="@drawable/goal" />
+
+    <!-- Score TextView -->
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score: 0"
+        android:textSize="20sp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp" />
+
+    <!-- Timer TextView -->
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time left: 00:00"
+        android:textSize="20sp"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp" />
 
 </FrameLayout>

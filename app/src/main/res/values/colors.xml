@@ -9,5 +9,24 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#FFC0CB</color>
     <color name="blue">#0000FF</color>
+        <!-- Couleurs de base -->
+        <color name="red">#FF0000</color>
+        <color name="green">#00FF00</color>
+        <color name="yellow">#FFFF00</color>
+        <color name="orange">#FFA500</color>
+        <color name="purple">#800080</color>
+        <color name="cyan">#00FFFF</color>
+        <color name="magenta">#FF00FF</color>
 
-</resources>
+        <!-- Couleur de fond contrastante -->
+        <color name="light_gray">#E0E0E0</color> <!-- Gris clair -->
+
+        <!-- Mix de couleurs -->
+        <!-- Mix de rouge et de bleu pour obtenir du violet -->
+        <color name="violet">#800080</color> <!-- Violet -->
+        <!-- Mix de jaune et de bleu pour obtenir du vert -->
+        <color name="mix_green">#00FF00</color> <!-- Vert -->
+        <!-- Mix de rouge et de vert pour obtenir du jaune -->
+        <color name="mix_yellow">#FFFF00</color> <!-- Jaune -->
+    </resources>
+

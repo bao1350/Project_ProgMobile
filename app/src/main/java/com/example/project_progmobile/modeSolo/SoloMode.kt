@@ -2,6 +2,8 @@ package com.example.project_progmobile.modeSolo
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -45,14 +47,14 @@ class SoloMode : ComponentActivity() {
     }
 
 
-         val availableGames = mutableListOf<Class<*>>(
-            GamesCapitales1::class.java,
-            ReflexGames::class.java,
-            TickGameActivity::class.java,
-            ShakeChallengeActivity::class.java
-        )
-        //selectedGame = availableGames.random()
-        //startActivityForResult(Intent(this, selectedGame), REQUEST_CODE_CHALLENGE)
+    val availableGames = mutableListOf<Class<*>>(
+        GamesCapitales1::class.java,
+        ReflexGames::class.java,
+        TickGameActivity::class.java,
+        ShakeChallengeActivity::class.java
+    )
+    //selectedGame = availableGames.random()
+    //startActivityForResult(Intent(this, selectedGame), REQUEST_CODE_CHALLENGE)
     private fun startRandomChallenge() {
         // Vérifier s'il reste des jeux disponibles
 
@@ -69,18 +71,20 @@ class SoloMode : ComponentActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_CHALLENGE && resultCode == RESULT_OK) {
             val score = data?.getIntExtra("score", 0) ?: 0
-            val reactionTime = data?.getLongExtra("reactionTime", 0) ?: 0
 
             when (selectedGame) {
                 GamesCapitales1::class.java -> {
                     if (score > 10000) {
                         showNextChallengeButton()
                     } else {
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            finish()
+                        }, 2000)
                         handleGameLoss()
                     }
                 }
                 ReflexGames::class.java -> {
-                    if (reactionTime < 400) {
+                    if (score < 2) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()

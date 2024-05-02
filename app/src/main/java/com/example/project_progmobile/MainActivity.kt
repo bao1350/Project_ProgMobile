@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
 
         }
         btnMulti.setOnClickListener {
-            startActivity(Intent(this, BluetoothDiscoveryActivity::class.java))
+
 
         }
 

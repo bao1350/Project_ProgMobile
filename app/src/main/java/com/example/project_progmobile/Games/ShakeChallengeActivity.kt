@@ -58,7 +58,7 @@ class ShakeChallengeActivity : ComponentActivity() {
         isGameRunning = true
 
         // Démarre le compte à rebours de 30 secondes
-        countdownTimer = object : CountDownTimer(10000, 1000) {
+        countdownTimer = object : CountDownTimer(20000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsLeft = millisUntilFinished / 1000
                 countdownTextView.text = "Temps restant: $secondsLeft s"

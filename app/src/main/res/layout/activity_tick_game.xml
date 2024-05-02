@@ -33,5 +33,16 @@
     android:textColor="@android:color/black"
     android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timer: 10"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/startButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
 
 </RelativeLayout>

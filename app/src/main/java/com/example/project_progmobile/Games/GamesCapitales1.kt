@@ -2,6 +2,8 @@ package com.example.project_progmobile.Games
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -144,6 +146,9 @@ class GamesCapitales1 : ComponentActivity() {
         resultIntent.putExtra("score", totalScore)
         setResult(RESULT_OK, resultIntent)
         finish()
+        Handler(Looper.getMainLooper()).postDelayed({
+            finish()
+        }, 2000)
     }
 
     private fun highlightCorrectAnswer(correctAnswerIndex: Int) {
