@@ -28,5 +28,12 @@
         <color name="mix_green">#00FF00</color> <!-- Vert -->
         <!-- Mix de rouge et de vert pour obtenir du jaune -->
         <color name="mix_yellow">#FFFF00</color> <!-- Jaune -->
+
+    <color name="blueclair">#2196F3</color>
+    <color name="blueclair2">#03A9F4</color>
+    <color name="greenn">#4CAF50</color>
+    <color name="redd">#FF5722</color>
+    <color name="orannge">#FF9800</color>
+
     </resources>
 

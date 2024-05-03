@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Games.ReflexGames">
+    tools:context=".Games.ReflexGames"
+    android:background="@drawable/button_gradient_blue">
 
     <Button
         android:id="@+id/startButton"
@@ -55,8 +56,26 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="Bienvenue dans le Réflexe Challenge !\nAppuyez sur le bouton vert dès qu'il apparaît.\n Fais attention si tu touche le bouton rouge tu verras ce qui se passeras"
+        android:text="Bienvenue dans le Réflexe Challenge !\nAppuyez sur le bouton vert dès qu'il apparaît.\nFais attention si tu touche le bouton rouge tu verras ce qui se passeras"
         android:textSize="18sp"
+        android:textColor="#FFFFFF"
         android:textAlignment="center"/>
+    <Button
+        android:id="@+id/btnReturnToHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Retour à l'accueil" />
+    <Button
+        android:id="@+id/replayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnReturnToHome"
+        android:layout_centerHorizontal="true"
+        android:text="Rejouer"
+        android:visibility="invisible" />
+
 
 </RelativeLayout>

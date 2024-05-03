@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/win_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/background_win"> <!-- Utilisation du drawable avec le dégradé de couleurs plus coloré -->
 
     <TextView
         android:id="@+id/textViewWinMessage"
@@ -10,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Vous avez gagné!"
         android:textSize="24sp"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/white"/> <!-- Texte en blanc pour contraster avec le fond coloré -->
 
 </RelativeLayout>

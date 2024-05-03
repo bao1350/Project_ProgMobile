@@ -1,35 +1,46 @@
-<!-- activity_difficulties_mode.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#FFEB3B">
+
+    <TextView
+        android:id="@+id/instructionsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Découvrez et testez vos connaissances avec ce jeu de culture générale ! \nChoisissez parmi trois niveaux de difficulté : facile, moyen et difficile.\n Répondez aux questions dans le temps imparti pour gagner des points. Soyez rapide car plus vous répondez rapidement, plus vous gagnez de points !\n! Êtes-vous prêt à relever le défi ? "
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textColor="#333333" /> <!-- Couleur du texte -->
 
     <Button
         android:id="@+id/btnEasy"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Facile" />
+        android:text="Facile"
+        android:textColor="#FFFFFF"
+    android:textSize="16sp"
+    android:background="#4CAF50"
+    android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/btnMedium"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Moyen" />
+        android:text="Moyen"
+        android:textColor="#FFFFFF"
+    android:textSize="16sp"
+    android:background="#2196F3"
+    android:layout_marginTop="10dp" />
 
     <Button
         android:id="@+id/btnHard"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Difficile" />
-    <TextView
-        android:id="@+id/instructionsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Découvrez et testez vos connaissances avec ce jeu de culture générale ! \nChoisissez parmi trois niveaux de difficulté : facile, moyen et difficile.\n Répondez aux questions dans le temps imparti pour gagner des points. Soyez rapide car plus vous répondez rapidement, plus vous gagnez de points !\n! Êtes-vous prêt à relever le défi ? "
-        android:textSize="18sp"
-        android:textAlignment="center"/>
+        android:text="Difficile"
+        android:textColor="#FFFFFF"
+    android:background="#F44336"
+    android:layout_marginTop="10dp" />
 
 </LinearLayout>

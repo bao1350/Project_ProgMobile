@@ -44,6 +44,24 @@
         android:theme="@style/Theme.Project_ProgMobile"
         tools:targetApi="31">
         <activity
+            android:name=".Games.MotionGameTraining"
+            android:exported="false" />
+        <activity
+            android:name=".Games.TickGameTraining"
+            android:exported="false" />
+        <activity
+            android:name=".Games.ShakeChallengeTraining"
+            android:exported="false" />
+        <activity
+            android:name=".Games.ReflexGamesTraining"
+            android:exported="false" />
+        <activity
+            android:name=".Games.GamesQuizzTraining"
+            android:exported="false" />
+        <activity
+            android:name=".Games.ClickButtonTraining"
+            android:exported="false" />
+        <activity
             android:name=".Games.Clickbutton"
             android:exported="false" />
         <activity
@@ -65,7 +83,7 @@
             android:name=".Games.DifficultiesMode"
             android:exported="false" />
         <activity
-            android:name=".Games.GamesCapitales1"
+            android:name=".Games.GamesQuizz"
             android:exported="false" />
         <activity
             android:name=".MiniGamesActivity"

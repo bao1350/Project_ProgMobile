@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Project_ProgMobile</string>
     <string name="game_over">Game Over</string>
+    <string name="quizz_game">Quizz Game</string>
 </resources>

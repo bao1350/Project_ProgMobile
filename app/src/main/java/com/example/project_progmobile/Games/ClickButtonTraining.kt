@@ -16,7 +16,7 @@ import com.example.project_progmobile.MainActivity
 import com.example.project_progmobile.R
 import kotlin.random.Random
 
-class Clickbutton : ComponentActivity() {
+class ClickButtonTraining : ComponentActivity() {
 
     private lateinit var btnPlay: Button
     private lateinit var btnClickHere: Button

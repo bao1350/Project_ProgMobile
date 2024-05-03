@@ -15,13 +15,15 @@ import androidx.activity.ComponentActivity
 import com.example.project_progmobile.MainActivity
 import com.example.project_progmobile.R
 
-class ShakeChallengeActivity : ComponentActivity() {
+class ShakeChallengeTraining : ComponentActivity() {
 
     private lateinit var startButton: Button
     private lateinit var countdownTextView: TextView
     private lateinit var scoreTextView: TextView
-    private lateinit var shakeDetector: ShakeDetector
+    private lateinit var shakeDetector: ShakeDetector1
     private lateinit var btnReturnToHome: Button
+    private  lateinit var instructionsTextView : TextView
+    private lateinit var btnReplay : Button
     private var score = 0
     private var countdownTimer: CountDownTimer? = null
     private var isGameRunning = false
@@ -30,13 +32,17 @@ class ShakeChallengeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shake_challenge)
 
+        // Initialisation des vues
         startButton = findViewById(R.id.startButton)
         countdownTextView = findViewById(R.id.countdownTextView)
         scoreTextView = findViewById(R.id.scoreTextView)
         btnReturnToHome = findViewById(R.id.btnReturnToHome)
+        instructionsTextView = findViewById(R.id.instructionsTextView)
+        btnReplay = findViewById(R.id.btnReplay)
 
-        shakeDetector = ShakeDetector(this)
-        shakeDetector.setOnShakeListener(object : ShakeDetector.OnShakeListener {
+        // Initialisation du détecteur de secousses
+        shakeDetector = ShakeDetector1(this)
+        shakeDetector.setOnShakeListener(object : ShakeDetector1.OnShakeListener {
             override fun onShake() {
                 if (isGameRunning) {
                     score++
@@ -45,12 +51,29 @@ class ShakeChallengeActivity : ComponentActivity() {
             }
         })
 
+        // Configuration du clic sur le bouton "Start"
         startButton.setOnClickListener {
             if (!isGameRunning) {
                 startGame()
             }
         }
-        btnReturnToHome.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
+
+        // Configuration du clic sur le bouton "Retour à l'accueil"
+        btnReturnToHome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        // Configuration du clic sur le bouton "Rejouer"
+        btnReplay.setOnClickListener {
+            restartGame()
+        }
+    }
+
+    private fun restartGame() {
+        // Rendre le bouton "Rejouer" invisible
+        btnReplay.visibility = View.INVISIBLE
+        // Redémarrer le jeu
+        startGame()
     }
 
     private fun startGame() {
@@ -59,6 +82,7 @@ class ShakeChallengeActivity : ComponentActivity() {
         startButton.visibility = View.INVISIBLE // Cacher le bouton "Start"
         countdownTextView.visibility = TextView.VISIBLE
         scoreTextView.visibility = TextView.VISIBLE
+        instructionsTextView.visibility=TextView.INVISIBLE
         isGameRunning = true
 
         // Démarre le compte à rebours de 30 secondes
@@ -79,19 +103,20 @@ class ShakeChallengeActivity : ComponentActivity() {
 
     private fun endGame() {
         countdownTextView.visibility = View.INVISIBLE
-        scoreTextView.visibility = View.VISIBLE // Rendre le TextView du score visible
-        scoreTextView.gravity = Gravity.CENTER // Centrer le TextView du score
+        scoreTextView.visibility = View.VISIBLE
+        scoreTextView.gravity = Gravity.CENTER
         countdownTextView.text = "Countdown"
         countdownTimer?.cancel()
         shakeDetector.stop()
-        startButton.visibility = View.INVISIBLE // Cacher le bouton "Start"
+        startButton.visibility = View.INVISIBLE
         isGameRunning = false
 
-        val resultIntent = Intent()
-        resultIntent.putExtra("score", score)
-        setResult(RESULT_OK, resultIntent)
-        finish() // Terminer cette activité
+        // Afficher le bouton "Rejouer"
+        btnReplay.visibility = View.VISIBLE
+
+
     }
+
 
 
     private fun updateScore() {
@@ -104,7 +129,7 @@ class ShakeChallengeActivity : ComponentActivity() {
     }
 }
 
-class ShakeDetector(context: Context) : SensorEventListener {
+class ShakeDetector1(context: Context) : SensorEventListener {
 
     private var sensorManager: SensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     private var accelerometer: Sensor? = null

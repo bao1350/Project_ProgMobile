@@ -1,6 +1,7 @@
 package com.example.project_progmobile.modeSolo
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,11 +9,12 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import com.example.project_progmobile.Games.GamesCapitales1
+import com.example.project_progmobile.Games.Clickbutton
+import com.example.project_progmobile.Games.GamesQuizz
+import com.example.project_progmobile.Games.MotionGame
 import com.example.project_progmobile.Games.ShakeChallengeActivity
 import com.example.project_progmobile.Games.TickGameActivity
 import com.example.project_progmobile.Games.ReflexGames
-import com.example.project_progmobile.MainActivity
 import com.example.project_progmobile.R
 
 class SoloMode : ComponentActivity() {
@@ -22,18 +24,19 @@ class SoloMode : ComponentActivity() {
     private lateinit var textViewExplanation: TextView
     private lateinit var textViewTitle: TextView
     private var selectedGame: Class<*>? = null
-
+    private lateinit var mediaPlayerLoss: MediaPlayer
+    private lateinit var mediaPlayerWin: MediaPlayer
     private var successfulChallenges = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_solo_mode)
 
+        setContentView(R.layout.activity_solo_mode)
+        mediaPlayerWin = MediaPlayer.create(this, R.raw.loss)
         btnStartChallenge = findViewById(R.id.btnStartChallenge)
         btnNextChallenge = findViewById(R.id.btnNextChallenge)
         textViewExplanation = findViewById(R.id.textViewExplanation)
         textViewTitle = findViewById(R.id.textViewTitle)
-
         btnStartChallenge.setOnClickListener {
             startRandomChallenge()
             btnStartChallenge.isEnabled = false // Désactiver le bouton de démarrage pendant le défi
@@ -48,10 +51,12 @@ class SoloMode : ComponentActivity() {
 
 
     val availableGames = mutableListOf<Class<*>>(
-        GamesCapitales1::class.java,
+        GamesQuizz::class.java,
         ReflexGames::class.java,
         TickGameActivity::class.java,
-        ShakeChallengeActivity::class.java
+        ShakeChallengeActivity::class.java,
+        Clickbutton::class.java,
+        MotionGame::class.java
     )
     //selectedGame = availableGames.random()
     //startActivityForResult(Intent(this, selectedGame), REQUEST_CODE_CHALLENGE)
@@ -73,7 +78,7 @@ class SoloMode : ComponentActivity() {
             val score = data?.getIntExtra("score", 0) ?: 0
 
             when (selectedGame) {
-                GamesCapitales1::class.java -> {
+                GamesQuizz::class.java -> {
                     if (score > 10000) {
                         showNextChallengeButton()
                     } else {
@@ -103,6 +108,18 @@ class SoloMode : ComponentActivity() {
                     } else {
                         handleGameLoss()
                     }
+
+                }
+                Clickbutton::class.java -> {
+                    if(score >12){
+                        showNextChallengeButton()
+                    }else{
+                        handleGameLoss()
+                    }
+
+                }
+                MotionGame::class.java ->{
+                    
                 }
             }
         }
@@ -113,6 +130,7 @@ class SoloMode : ComponentActivity() {
         if (successfulChallenges >= 3) {
             // Afficher l'écran de victoire lorsque le joueur réussit trois défis
             setContentView(R.layout.win_screen)
+            mediaPlayerWin.start()
             return
         }
 
@@ -128,6 +146,8 @@ class SoloMode : ComponentActivity() {
     private fun handleGameLoss() {
         // Afficher l'écran de fin du jeu avec le texte "Game Over"
         setContentView(R.layout.game_over_screen)
+        mediaPlayerLoss.start()
+
     }
 
     companion object {

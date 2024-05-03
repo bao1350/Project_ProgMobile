@@ -4,13 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Text View pour expliquer le jeu -->
+    <TextView
+        android:id="@+id/instructionsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Appuyez et faites glisser pour déplacer le joueur. Atteignez le but pour gagner des points et évitez les obstacles!"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"/>
+
     <!-- Player ImageView -->
     <ImageView
         android:id="@+id/player"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/player"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="invisible" />
 
     <!-- Obstacle 1 -->
     <ImageView
@@ -18,7 +31,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_red_light"
-        android:src="@drawable/obstacle" />
+        android:src="@drawable/obstacle"
+        android:visibility="invisible" />
 
     <!-- Obstacle 2 -->
     <ImageView
@@ -26,7 +40,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_red_light"
-        android:src="@drawable/obstacle" />
+        android:src="@drawable/obstacle"
+        android:visibility="invisible" />
 
     <!-- Obstacle 3 -->
     <ImageView
@@ -34,7 +49,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_red_light"
-        android:src="@drawable/obstacle" />
+        android:src="@drawable/obstacle"
+        android:visibility="invisible" />
 
     <!-- Obstacle 4 -->
     <ImageView
@@ -42,7 +58,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_red_light"
-        android:src="@drawable/obstacle" />
+        android:src="@drawable/obstacle"
+        android:visibility="invisible" />
 
     <!-- Obstacle 5 -->
     <ImageView
@@ -50,7 +67,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_red_light"
-        android:src="@drawable/obstacle" />
+        android:src="@drawable/obstacle"
+        android:visibility="invisible" />
 
     <!-- Goal ImageView -->
     <ImageView
@@ -58,7 +76,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_green_light"
-        android:src="@drawable/goal" />
+        android:src="@drawable/goal"
+        android:visibility="invisible" />
 
     <!-- Score TextView -->
     <TextView
@@ -68,7 +87,8 @@
         android:text="Score: 0"
         android:textSize="20sp"
         android:layout_gravity="top|start"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:visibility="invisible"/>
 
     <!-- Timer TextView -->
     <TextView
@@ -78,6 +98,34 @@
         android:text="Time left: 00:00"
         android:textSize="20sp"
         android:layout_gravity="top|end"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:visibility="invisible"/>
+
+    <!-- Rejouer Button -->
+    <Button
+        android:id="@+id/replayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rejouer"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
+
+    <!-- Start Button -->
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:layout_gravity="center"
+        android:visibility="visible"/>
+
+    <!-- Retour à l'accueil Button -->
+    <Button
+        android:id="@+id/btnReturnToHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:text="Retour à l'accueil" />
 
 </FrameLayout>

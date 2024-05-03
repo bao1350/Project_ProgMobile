@@ -14,7 +14,7 @@ import com.example.project_progmobile.MainActivity
 import com.example.project_progmobile.R
 import kotlin.random.Random
 
-class MotionGame : ComponentActivity() {
+class MotionGameTraining : ComponentActivity() {
 
     private lateinit var player: ImageView
     private lateinit var goal: ImageView

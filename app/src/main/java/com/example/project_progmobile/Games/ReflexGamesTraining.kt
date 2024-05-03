@@ -1,4 +1,5 @@
 package com.example.project_progmobile.Games
+
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -10,7 +11,7 @@ import com.example.project_progmobile.MainActivity
 import com.example.project_progmobile.R
 import kotlin.random.Random
 
-class ReflexGames : ComponentActivity() {
+class ReflexGamesTraining : ComponentActivity() {
 
     private lateinit var startButton: Button
     private lateinit var greenButton: Button
@@ -19,6 +20,7 @@ class ReflexGames : ComponentActivity() {
     private lateinit var reactionTimeTextView: TextView
     private lateinit var timeTextView: TextView
     private lateinit var instructionsTextView: TextView
+    private lateinit var replayButton: Button // Bouton de rejouer
     private var startTime: Long = 0
     private var isReactionTimeRecorded = false
     private var isGameStarted = false
@@ -35,6 +37,7 @@ class ReflexGames : ComponentActivity() {
         timeTextView = findViewById(R.id.timeTextView)
         instructionsTextView = findViewById(R.id.instructionsTextView)
         btnReturnToHome = findViewById(R.id.btnReturnToHome)
+        replayButton = findViewById(R.id.replayButton) // Initialiser le bouton de rejouer
 
         // Afficher les instructions
         instructionsTextView.visibility = View.VISIBLE
@@ -74,23 +77,40 @@ class ReflexGames : ComponentActivity() {
                 timeTextView.visibility = View.VISIBLE
                 timeTextView.text = "$seconds seconds"
                 isReactionTimeRecorded = true // Marquer que le temps de réaction a été enregistré
-
-                val resultIntent = Intent()
-                resultIntent.putExtra("score", seconds)
-                setResult(RESULT_OK, resultIntent)
-                finish() // Terminer cette activité
-
-                }
-
+                // Afficher le bouton de rejouer une fois que le jeu est terminé
+                replayButton.visibility = View.VISIBLE
             }
+        }
+
         redButton.setOnClickListener {
-            startActivity(Intent(this,ReflexGames::class.java))
+            startActivity(Intent(this, ReflexGames::class.java))
         }
+
         btnReturnToHome.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
-    }
+
+        replayButton.setOnClickListener {
+            // Réinitialisation du jeu
+            resetGame()
         }
+    }
+    // Méthode pour réinitialiser le jeu
+    private fun resetGame() {
+        // Réinitialisation des variables de jeu
+        hasLost = false
+        isReactionTimeRecorded = false
+        isGameStarted = false
 
+        // Réinitialisation de l'interface utilisateur
+        reactionTimeTextView.visibility = View.INVISIBLE
+        timeTextView.visibility = View.INVISIBLE
+        instructionsTextView.visibility = View.VISIBLE
+        startButton.visibility = View.VISIBLE
+        greenButton.visibility = View.INVISIBLE
+        redButton.visibility = View.INVISIBLE
+        replayButton.visibility = View.INVISIBLE
 
+        // Réinitialisation du texte affiché
+        timeTextView.text = ""
+    }
 
-
-
+}
