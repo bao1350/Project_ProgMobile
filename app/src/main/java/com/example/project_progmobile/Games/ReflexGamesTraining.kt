@@ -1,5 +1,7 @@
 package com.example.project_progmobile.Games
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -20,7 +22,6 @@ class ReflexGamesTraining : ComponentActivity() {
     private lateinit var reactionTimeTextView: TextView
     private lateinit var timeTextView: TextView
     private lateinit var instructionsTextView: TextView
-    private lateinit var replayButton: Button // Bouton de rejouer
     private var startTime: Long = 0
     private var isReactionTimeRecorded = false
     private var isGameStarted = false
@@ -37,7 +38,6 @@ class ReflexGamesTraining : ComponentActivity() {
         timeTextView = findViewById(R.id.timeTextView)
         instructionsTextView = findViewById(R.id.instructionsTextView)
         btnReturnToHome = findViewById(R.id.btnReturnToHome)
-        replayButton = findViewById(R.id.replayButton) // Initialiser le bouton de rejouer
 
         // Afficher les instructions
         instructionsTextView.visibility = View.VISIBLE
@@ -60,11 +60,9 @@ class ReflexGamesTraining : ComponentActivity() {
             Handler().postDelayed({
                 greenButton.visibility = View.VISIBLE
                 startTime = System.currentTimeMillis()
-                isReactionTimeRecorded =
-                    false // Réinitialiser l'enregistrement du temps de réaction
+                isReactionTimeRecorded = false // Réinitialiser l'enregistrement du temps de réaction
                 isGameStarted = true
-                redButton.visibility =
-                    View.INVISIBLE // Le bouton rouge disparaît lorsque le vert apparaît
+                redButton.visibility = View.INVISIBLE // Le bouton rouge disparaît lorsque le vert apparaît
             }, delayForGreen)
         }
 
@@ -72,45 +70,55 @@ class ReflexGamesTraining : ComponentActivity() {
             if (!isReactionTimeRecorded && !hasLost) {
                 val endTime = System.currentTimeMillis()
                 val reactionTime = endTime - startTime
-                val seconds = reactionTime / 1000.0
                 reactionTimeTextView.visibility = View.VISIBLE
                 timeTextView.visibility = View.VISIBLE
-                timeTextView.text = "$seconds seconds"
+                timeTextView.text = "$reactionTime ms"
                 isReactionTimeRecorded = true // Marquer que le temps de réaction a été enregistré
-                // Afficher le bouton de rejouer une fois que le jeu est terminé
-                replayButton.visibility = View.VISIBLE
+
+                // Afficher le dialogue avec le temps de réaction
+                showReactionTimeDialog(reactionTime)
             }
         }
 
         redButton.setOnClickListener {
+            // Redémarrer l'activité si le bouton rouge est cliqué
             startActivity(Intent(this, ReflexGames::class.java))
         }
 
-        btnReturnToHome.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
-
-        replayButton.setOnClickListener {
-            // Réinitialisation du jeu
-            resetGame()
+        btnReturnToHome.setOnClickListener {
+            // Retourner à l'écran d'accueil
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
+
+    // Méthode pour afficher le dialogue avec le temps de réaction
+    private fun showReactionTimeDialog(reactionTime: Long) {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setMessage("Votre temps de réaction est de $reactionTime ms.")
+            .setCancelable(false)
+            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, id ->
+                // Réinitialiser le jeu lorsque l'utilisateur appuie sur "OK"
+                resetGame()
+                dialog.dismiss()
+            })
+
+        val alert = dialogBuilder.create()
+        alert.setTitle("Temps de Réaction")
+        alert.show()
+    }
+
     // Méthode pour réinitialiser le jeu
     private fun resetGame() {
-        // Réinitialisation des variables de jeu
-        hasLost = false
-        isReactionTimeRecorded = false
-        isGameStarted = false
-
-        // Réinitialisation de l'interface utilisateur
+        greenButton.visibility = View.INVISIBLE
+        redButton.visibility = View.INVISIBLE
         reactionTimeTextView.visibility = View.INVISIBLE
         timeTextView.visibility = View.INVISIBLE
         instructionsTextView.visibility = View.VISIBLE
+
+        // Afficher les instructions
+        instructionsTextView.visibility = View.VISIBLE
+
+        // Redémarrer le jeu
         startButton.visibility = View.VISIBLE
-        greenButton.visibility = View.INVISIBLE
-        redButton.visibility = View.INVISIBLE
-        replayButton.visibility = View.INVISIBLE
-
-        // Réinitialisation du texte affiché
-        timeTextView.text = ""
     }
-
 }

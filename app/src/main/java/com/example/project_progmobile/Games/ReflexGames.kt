@@ -1,4 +1,7 @@
 package com.example.project_progmobile.Games
+
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -57,11 +60,9 @@ class ReflexGames : ComponentActivity() {
             Handler().postDelayed({
                 greenButton.visibility = View.VISIBLE
                 startTime = System.currentTimeMillis()
-                isReactionTimeRecorded =
-                    false // Réinitialiser l'enregistrement du temps de réaction
+                isReactionTimeRecorded = false // Réinitialiser l'enregistrement du temps de réaction
                 isGameStarted = true
-                redButton.visibility =
-                    View.INVISIBLE // Le bouton rouge disparaît lorsque le vert apparaît
+                redButton.visibility = View.INVISIBLE // Le bouton rouge disparaît lorsque le vert apparaît
             }, delayForGreen)
         }
 
@@ -69,28 +70,28 @@ class ReflexGames : ComponentActivity() {
             if (!isReactionTimeRecorded && !hasLost) {
                 val endTime = System.currentTimeMillis()
                 val reactionTime = endTime - startTime
-                val seconds = reactionTime / 1000.0
                 reactionTimeTextView.visibility = View.VISIBLE
                 timeTextView.visibility = View.VISIBLE
-                timeTextView.text = "$seconds seconds"
+                timeTextView.text = "$reactionTime ms"
                 isReactionTimeRecorded = true // Marquer que le temps de réaction a été enregistré
-
                 val resultIntent = Intent()
-                resultIntent.putExtra("score", seconds)
+                resultIntent.putExtra("score1", reactionTime)
                 setResult(RESULT_OK, resultIntent)
-                finish() // Terminer cette activité
-
-                }
+                finish()
+                // Afficher le dialogue avec le temps de réaction
 
             }
+        }
+
         redButton.setOnClickListener {
-            startActivity(Intent(this,ReflexGames::class.java))
+            // Redémarrer l'activité si le bouton rouge est cliqué
+            startActivity(Intent(this, ReflexGames::class.java))
         }
-        btnReturnToHome.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
+
+        btnReturnToHome.setOnClickListener {
+            // Retourner à l'écran d'accueil
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
-        }
 
-
-
-
-
+}

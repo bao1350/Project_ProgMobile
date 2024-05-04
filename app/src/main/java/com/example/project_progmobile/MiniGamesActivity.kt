@@ -39,7 +39,7 @@ class MiniGamesActivity : ComponentActivity() {
 
         listView.setOnItemClickListener { _, _, position, _ ->
             when (position) {
-                0 -> startActivity(Intent(this, GamesQuizzTraining::class.java))
+                0 -> startActivity(Intent(this, DifficultiesMode::class.java))
                 1 -> startActivity(Intent(this, ReflexGamesTraining::class.java))
                 2 -> startActivity(Intent(this, TickGameTraining::class.java))
                 3 -> startActivity(Intent(this, ShakeChallengeTraining::class.java))

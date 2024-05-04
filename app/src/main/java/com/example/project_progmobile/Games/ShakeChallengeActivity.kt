@@ -22,6 +22,7 @@ class ShakeChallengeActivity : ComponentActivity() {
     private lateinit var scoreTextView: TextView
     private lateinit var shakeDetector: ShakeDetector
     private lateinit var btnReturnToHome: Button
+    private lateinit var instructiontextView: TextView
     private var score = 0
     private var countdownTimer: CountDownTimer? = null
     private var isGameRunning = false
@@ -34,6 +35,7 @@ class ShakeChallengeActivity : ComponentActivity() {
         countdownTextView = findViewById(R.id.countdownTextView)
         scoreTextView = findViewById(R.id.scoreTextView)
         btnReturnToHome = findViewById(R.id.btnReturnToHome)
+        instructiontextView=findViewById(R.id.instructionsTextView)
 
         shakeDetector = ShakeDetector(this)
         shakeDetector.setOnShakeListener(object : ShakeDetector.OnShakeListener {
@@ -59,6 +61,8 @@ class ShakeChallengeActivity : ComponentActivity() {
         startButton.visibility = View.INVISIBLE // Cacher le bouton "Start"
         countdownTextView.visibility = TextView.VISIBLE
         scoreTextView.visibility = TextView.VISIBLE
+        instructiontextView.visibility=TextView.INVISIBLE
+
         isGameRunning = true
 
         // Démarre le compte à rebours de 30 secondes

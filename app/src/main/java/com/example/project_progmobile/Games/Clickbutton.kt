@@ -63,6 +63,8 @@ class Clickbutton : ComponentActivity() {
         tvInstructions.text = "Cliquez sur le bouton pour gagner des points !"
         btnPlay.visibility = View.INVISIBLE
         btnClickHere.visibility = View.VISIBLE
+        tvInstructions.visibility=View.INVISIBLE
+        btnReturnToHome.visibility=View.INVISIBLE
 
         // Timer pour le jeu
         timer = object : CountDownTimer(10000, 1000) {
@@ -85,9 +87,9 @@ class Clickbutton : ComponentActivity() {
         val resultIntent = Intent()
         resultIntent.putExtra("score", score)
         setResult(RESULT_OK, resultIntent)
-        //finish()
+        finish()
         // Afficher une fenêtre contextuelle avec le score
-        showScoreDialog(score)
+
     }
 
     private fun increaseScore() {

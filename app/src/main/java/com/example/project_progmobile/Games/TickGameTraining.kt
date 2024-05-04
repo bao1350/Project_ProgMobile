@@ -1,5 +1,6 @@
 package com.example.project_progmobile.Games
-
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -15,7 +16,6 @@ class TickGameTraining : ComponentActivity() {
     private lateinit var instructionsTextView: TextView
     private lateinit var shakeCountTextView: TextView
     private lateinit var startButton: Button
-    private lateinit var replayButton: Button
     private lateinit var timerTextView: TextView
     private lateinit var btnReturnToHome: Button
     private var shakeCount = 0
@@ -29,20 +29,15 @@ class TickGameTraining : ComponentActivity() {
         instructionsTextView = findViewById(R.id.instructionsTextView)
         shakeCountTextView = findViewById(R.id.shakeCountTextView)
         startButton = findViewById(R.id.startButton)
-        replayButton = findViewById(R.id.replayButton)
         timerTextView = findViewById(R.id.timerTextView)
         btnReturnToHome = findViewById(R.id.btnReturnToHome)
 
-        replayButton.visibility = View.INVISIBLE
         timerTextView.visibility = View.INVISIBLE
 
         startButton.setOnClickListener {
             startGame()
         }
 
-        replayButton.setOnClickListener {
-            resetGame()
-        }
 
         btnReturnToHome.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
@@ -55,12 +50,11 @@ class TickGameTraining : ComponentActivity() {
 
         instructionsTextView.visibility = View.INVISIBLE
         startButton.visibility = View.INVISIBLE
-        replayButton.visibility = View.INVISIBLE
 
         shakeCountTextView.visibility = View.VISIBLE
         timerTextView.visibility = View.VISIBLE
 
-        countDownTimer = object : CountDownTimer(20000, 1000) {
+        countDownTimer = object : CountDownTimer(10000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = millisUntilFinished / 1000
                 timerTextView.text = "Timer: $secondsRemaining"
@@ -69,16 +63,14 @@ class TickGameTraining : ComponentActivity() {
             override fun onFinish() {
                 gameStarted = false
                 shakeCountTextView.text = "Shake count: $shakeCount"
-                replayButton.visibility = View.VISIBLE
+                showScoreDialog()
             }
         }.start()
     }
 
     private fun resetGame() {
-        shakeCount = 0
-        shakeCountTextView.text = "Shake count: $shakeCount"
-        replayButton.visibility = View.INVISIBLE
-        startGame()
+        startActivity(Intent(this, TickGameTraining::class.java))
+        finish() // Optionnel : fermer l'activité actuelle pour éviter la superposition d'activités
     }
 
     override fun onUserInteraction() {
@@ -87,5 +79,17 @@ class TickGameTraining : ComponentActivity() {
             shakeCount++
             shakeCountTextView.text = "Shake count: $shakeCount"
         }
+    }
+
+    private fun showScoreDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Le temps est écoulé")
+        builder.setMessage("Your score: $shakeCount")
+        builder.setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.dismiss()
+            resetGame()
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 }

@@ -32,7 +32,8 @@ class SoloMode : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_solo_mode)
-        mediaPlayerWin = MediaPlayer.create(this, R.raw.loss)
+        mediaPlayerWin = MediaPlayer.create(this, R.raw.win)
+        mediaPlayerLoss=MediaPlayer.create(this,R.raw.loss)
         btnStartChallenge = findViewById(R.id.btnStartChallenge)
         btnNextChallenge = findViewById(R.id.btnNextChallenge)
         textViewExplanation = findViewById(R.id.textViewExplanation)
@@ -76,20 +77,18 @@ class SoloMode : ComponentActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_CHALLENGE && resultCode == RESULT_OK) {
             val score = data?.getIntExtra("score", 0) ?: 0
+            val score1 = data?.getLongExtra("score1", 0L) ?: 0L
 
             when (selectedGame) {
                 GamesQuizz::class.java -> {
-                    if (score > 10000) {
+                    if (score > 5000) {
                         showNextChallengeButton()
                     } else {
-                        Handler(Looper.getMainLooper()).postDelayed({
-                            finish()
-                        }, 2000)
                         handleGameLoss()
                     }
                 }
                 ReflexGames::class.java -> {
-                    if (score < 2) {
+                    if (score1 < 500) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()
@@ -108,22 +107,25 @@ class SoloMode : ComponentActivity() {
                     } else {
                         handleGameLoss()
                     }
-
                 }
                 Clickbutton::class.java -> {
                     if(score >12){
                         showNextChallengeButton()
-                    }else{
+                    } else {
                         handleGameLoss()
                     }
-
                 }
                 MotionGame::class.java ->{
-                    
+                    if(score>5){
+                        showNextChallengeButton()
+                    } else {
+                        handleGameLoss()
+                    }
                 }
             }
         }
     }
+
 
     private fun showNextChallengeButton() {
         successfulChallenges++

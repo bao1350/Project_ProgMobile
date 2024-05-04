@@ -1,5 +1,6 @@
 package com.example.project_progmobile.Games
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.RectF
 import android.os.Bundle
@@ -151,8 +152,29 @@ class MotionGameTraining : ComponentActivity() {
 
             override fun onFinish() {
                 timerTextView.text = "Time's up!"
+                showScoreDialog() // Afficher le dialogue lorsque le temps est écoulé
             }
         }.start()
+    }
+
+    private fun showScoreDialog() {
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Game Over")
+            .setMessage("Your score: $score")
+            .setPositiveButton("OK") { dialog, which ->
+                resetGame()
+                dialog.dismiss()
+            }
+            .create()
+
+        dialog.show()
+    }
+
+    private fun resetGame() {
+        // Réinitialiser le jeu ici
+        // Par exemple, vous pouvez redémarrer l'activité ou effectuer toute autre opération de réinitialisation
+        startActivity(Intent(this, MotionGameTraining::class.java))
+        finish() // Optionnel : fermer l'activité actuelle pour éviter la superposition d'activités
     }
 
     private fun resetGoalPosition() {

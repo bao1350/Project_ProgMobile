@@ -1,5 +1,6 @@
 package com.example.project_progmobile.Games
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.RectF
 import android.os.Bundle
@@ -151,6 +152,10 @@ class MotionGame : ComponentActivity() {
 
             override fun onFinish() {
                 timerTextView.text = "Time's up!"
+                val resultIntent = Intent()
+                resultIntent.putExtra("score", score)
+                setResult(Activity.RESULT_OK, resultIntent)
+                finish()
             }
         }.start()
     }
