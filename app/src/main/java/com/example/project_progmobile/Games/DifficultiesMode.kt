@@ -32,7 +32,7 @@ class DifficultiesMode : ComponentActivity() {
     }
 
     private fun startGame(difficultyMode: String) {
-        val intent = Intent(this, GamesQuizz::class.java).apply {
+        val intent = Intent(this, GamesQuizzTraining::class.java).apply {
             putExtra("difficulty_mode", difficultyMode)
         }
         startActivity(intent)

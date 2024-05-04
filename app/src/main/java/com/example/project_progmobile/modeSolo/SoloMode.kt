@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.example.project_progmobile.Games.Clickbutton
 import com.example.project_progmobile.Games.GamesQuizz
+import com.example.project_progmobile.Games.GamesQuizzHard
+import com.example.project_progmobile.Games.GamesQuizzMedium
 import com.example.project_progmobile.Games.MotionGame
 import com.example.project_progmobile.Games.ShakeChallengeActivity
 import com.example.project_progmobile.Games.TickGameActivity
@@ -51,13 +53,15 @@ class SoloMode : ComponentActivity() {
     }
 
 
-    val availableGames = mutableListOf<Class<*>>(
+    private val availableGames = mutableListOf<Class<*>>(
         GamesQuizz::class.java,
         ReflexGames::class.java,
         TickGameActivity::class.java,
         ShakeChallengeActivity::class.java,
         Clickbutton::class.java,
-        MotionGame::class.java
+        MotionGame::class.java,
+        GamesQuizzHard::class.java,
+        GamesQuizzMedium::class.java
     )
     //selectedGame = availableGames.random()
     //startActivityForResult(Intent(this, selectedGame), REQUEST_CODE_CHALLENGE)
@@ -66,9 +70,21 @@ class SoloMode : ComponentActivity() {
 
         // Sélectionner un jeu aléatoire parmi les jeux disponibles restants
         selectedGame = availableGames.random()
+        if(selectedGame == GamesQuizz::class.java){
+            availableGames.remove(GamesQuizzMedium::class.java)
+            availableGames.remove(GamesQuizzHard::class.java)
+        }else if(selectedGame ==GamesQuizzMedium::class.java){
+            availableGames.remove(GamesQuizz::class.java)
+            availableGames.remove(GamesQuizzHard::class.java)
+        }else if(selectedGame == GamesQuizzHard::class.java){
+            availableGames.remove(GamesQuizz::class.java)
+            availableGames.remove(GamesQuizzMedium::class.java)
+        }else{
+            availableGames.remove(selectedGame)
+        }
 
         // Retirer le jeu sélectionné de la liste des jeux disponibles
-        availableGames.remove(selectedGame)
+
 
         startActivityForResult(Intent(this, selectedGame), REQUEST_CODE_CHALLENGE)
     }
@@ -81,7 +97,7 @@ class SoloMode : ComponentActivity() {
 
             when (selectedGame) {
                 GamesQuizz::class.java -> {
-                    if (score > 5000) {
+                    if (score > 12000) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()

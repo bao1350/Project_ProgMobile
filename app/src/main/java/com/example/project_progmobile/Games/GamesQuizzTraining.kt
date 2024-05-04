@@ -1,10 +1,13 @@
 package com.example.project_progmobile.Games
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -15,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.max
+
 
 class GamesQuizzTraining : ComponentActivity() {
     private lateinit var questionTextView: TextView
@@ -30,17 +34,13 @@ class GamesQuizzTraining : ComponentActivity() {
     private var questionScore = 1000 // Score initial par question
     private var answeredAllQuestions = false
     private lateinit var countDownTimer: CountDownTimer
-    private val questionDurationMillis = 15000L // 15 secondes
     private val delayBeforeNextQuestionMillis = 500L // Délai de 0.5 seconde
-
-    // Définir les questions pour chaque mode de difficulté
     private lateinit var questions: List<Question>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_games_capitales)
 
-        // Initialiser les vues
         questionTextView = findViewById(R.id.questionTextView)
         answerButton1 = findViewById(R.id.answerButton1)
         answerButton2 = findViewById(R.id.answerButton2)
@@ -50,19 +50,16 @@ class GamesQuizzTraining : ComponentActivity() {
         btnReturnToHome = findViewById(R.id.btnReturnToHome)
         timerTextView = findViewById(R.id.timerTextView)
 
-        // Charger les questions en fonction du mode de difficulté sélectionné
         val difficultyMode = intent.getStringExtra("difficulty_mode")
         questions = when (difficultyMode) {
             "easy" -> easyQuestions.shuffled().take(15)
             "medium" -> mediumQuestions.shuffled().take(15)
             "hard" -> hardQuestions.shuffled().take(15)
-            else -> easyQuestions.shuffled().take(15) // Par défaut, mode facile
+            else -> easyQuestions.shuffled().take(15)
         }
 
-        // Commencer à afficher les questions
         displayQuestion()
 
-        // Définir les écouteurs de clic pour les boutons de réponse
         answerButton1.setOnClickListener { checkAnswer(0) }
         answerButton2.setOnClickListener { checkAnswer(1) }
         answerButton3.setOnClickListener { checkAnswer(2) }
@@ -72,7 +69,7 @@ class GamesQuizzTraining : ComponentActivity() {
     }
 
     private fun displayQuestion() {
-        resetAnswerButtonBackground() // Réinitialiser les arrière-plans des boutons de réponse avant d'afficher une nouvelle question
+        resetAnswerButtonBackground()
         if (currentQuestionIndex < questions.size) {
             val question = questions[currentQuestionIndex]
             questionTextView.text = "Question ${currentQuestionIndex + 1}/${questions.size}: ${question.question}"
@@ -94,16 +91,16 @@ class GamesQuizzTraining : ComponentActivity() {
     }
 
     private fun startTimer() {
-        questionScore = 1000 // Réinitialiser le score de la question à 1000
-        countDownTimer = object : CountDownTimer(questionDurationMillis, 100) {
+        questionScore = 1000
+        countDownTimer = object : CountDownTimer(15000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timerTextView.text = String.format("%.1f", millisUntilFinished / 1000.0)
-                questionScore -= 25 // Décrémenter le score de la question de 25 toutes les demi-secondes
+                questionScore -= 50
             }
 
             override fun onFinish() {
                 timerTextView.text = "0.0"
-                totalScore += max(0, questionScore) // Ajouter le score de la question au score total
+                totalScore += max(0, questionScore)
                 currentQuestionIndex++
                 displayQuestion()
             }
@@ -111,20 +108,18 @@ class GamesQuizzTraining : ComponentActivity() {
     }
 
     private fun checkAnswer(selectedAnswerIndex: Int) {
-        countDownTimer.cancel() // Annuler le timer
-        if (answeredAllQuestions) return // Ne rien faire si toutes les questions ont été répondues
+        countDownTimer.cancel()
+        if (answeredAllQuestions) return
         val question = questions[currentQuestionIndex]
 
         if (selectedAnswerIndex == question.correctAnswerIndex) {
             totalScore += questionScore
             highlightCorrectAnswer(selectedAnswerIndex)
         } else {
-            // Si la réponse est incorrecte, ne pas ajouter de points au score
             highlightCorrectAnswer(question.correctAnswerIndex)
             highlightWrongAnswer(selectedAnswerIndex)
         }
 
-        // Afficher la bonne réponse après un délai
         CoroutineScope(Dispatchers.Main).launch {
             delay(delayBeforeNextQuestionMillis)
             currentQuestionIndex++
@@ -132,21 +127,27 @@ class GamesQuizzTraining : ComponentActivity() {
         }
     }
 
-
     private fun finishGame() {
-        // Afficher le score final
         val message = "Score final: $totalScore"
-        questionTextView.text = message
-        // Désactiver les boutons de réponse après avoir répondu à toutes les questions
-        answerButton1.isEnabled = false
-        answerButton2.isEnabled = false
-        answerButton3.isEnabled = false
-        answerButton4.isEnabled = false
+
+        answerButton1.visibility = View.INVISIBLE
+        answerButton2.visibility = View.INVISIBLE
+        answerButton3.visibility = View.INVISIBLE
+        answerButton4.visibility = View.INVISIBLE
         answeredAllQuestions = true
 
-
+        // Afficher une fenêtre de dialogue avec le score final
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setTitle("Fin du jeu")
+        alertDialog.setMessage(message)
+        alertDialog.setPositiveButton("OK") { dialog, which ->
+            startActivity(Intent(this, DifficultiesMode::class.java))
+        }
+        alertDialog.setOnCancelListener(DialogInterface.OnCancelListener {
+            startActivity(Intent(this, DifficultiesMode::class.java))
+        })
+        alertDialog.show()
     }
-
     private fun highlightCorrectAnswer(correctAnswerIndex: Int) {
         when (correctAnswerIndex) {
             0 -> answerButton1.setBackgroundResource(R.drawable.correct_answer_background)
@@ -164,6 +165,7 @@ class GamesQuizzTraining : ComponentActivity() {
             3 -> answerButton4.setBackgroundResource(R.drawable.wrong_answer_background)
         }
     }
+
 
     data class Question(
         val question: String,
