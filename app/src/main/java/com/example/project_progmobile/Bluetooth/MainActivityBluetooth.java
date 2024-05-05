@@ -28,6 +28,7 @@ import java.util.UUID;
 public class MainActivityBluetooth extends ComponentActivity implements AdapterView.OnItemClickListener{
     private static final String TAG = "MainActivity";
 
+
     BluetoothAdapter mBluetoothAdapter;
     Button btnEnableDisable_Discoverable;
 
@@ -174,10 +175,29 @@ public class MainActivityBluetooth extends ComponentActivity implements AdapterV
     protected void onDestroy() {
         Log.d(TAG, "onDestroy: called.");
         super.onDestroy();
-        unregisterReceiver(mBroadcastReceiver1);
-        unregisterReceiver(mBroadcastReceiver2);
-        unregisterReceiver(mBroadcastReceiver3);
-        unregisterReceiver(mBroadcastReceiver4);
+        try{
+            unregisterReceiver(mBroadcastReceiver1);
+        }catch (Exception e){
+            Log.e(TAG, "onDestroy Receiver1: " + e.getMessage());
+        }
+
+        try{
+            unregisterReceiver(mBroadcastReceiver2);
+        }catch (Exception e){
+            Log.e(TAG, "onDestroy Receiver2: " + e.getMessage());
+        }
+
+        try{
+            unregisterReceiver(mBroadcastReceiver3);
+        }catch (Exception e){
+            Log.e(TAG, "onDestroy Receiver3: " + e.getMessage());
+        }
+
+        try {
+            unregisterReceiver(mBroadcastReceiver4);
+        }catch (Exception e){
+            Log.e(TAG, "onDestroy Receiver4: " + e.getMessage());
+        }
         //mBluetoothAdapter.cancelDiscovery();
     }
 
@@ -189,6 +209,7 @@ public class MainActivityBluetooth extends ComponentActivity implements AdapterV
         btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
+
 
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
         btnSend = (Button) findViewById(R.id.btnSend);

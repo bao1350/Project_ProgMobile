@@ -52,6 +52,10 @@
         android:theme="@style/Theme.Project_ProgMobile"
         tools:targetApi="31">
         <activity
+            android:name=".Bluetooth.MainActivityBluetooth"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".Games.GamesQuizzHard"
             android:exported="false" />
         <activity

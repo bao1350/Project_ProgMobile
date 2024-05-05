@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import com.example.project_progmobile.modeSolo.SoloMode
+import com.example.project_progmobile.Bluetooth.MainActivityBluetooth
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +15,7 @@ class MainActivity : ComponentActivity() {
        //val btnMultiplayer = findViewById<Button>(R.id.btnMultiplayer)
         val btnTraining = findViewById<Button>(R.id.btnTraining)
         val btnMulti = findViewById<Button>(R.id.btnMultiplayer)
+        val btnBluetooth = findViewById<Button>(R.id.btnBluetooth)
 
         // Définition des listeners de clic pour chaque bouton
         btnSolo.setOnClickListener {
@@ -28,6 +30,10 @@ class MainActivity : ComponentActivity() {
 
 
         }
+        btnBluetooth.setOnClickListener{
+            startActivity(Intent(this, MainActivityBluetooth::class.java))
+        }
+
 
     }
 
