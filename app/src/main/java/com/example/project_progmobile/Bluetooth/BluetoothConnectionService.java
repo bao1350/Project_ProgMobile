@@ -281,11 +281,11 @@ public class BluetoothConnectionService {
                     il faudrais avoir des messages avec un meilleur format (json ?)
                     pour gérer les messages avec de la data (ex : selectedGame)
                      */
-                    if(incomingMessage == "start_mode_multi"){
+                    if(incomingMessage.equals("start_mode_multi")){
 
-                    } else if (incomingMessage == "other_player_lost") {
+                    } else if (incomingMessage.equals("other_player_lost")) {
 
-                    } else if (incomingMessage == "other_player_challenge_finish") {
+                    } else if (incomingMessage.equals("other_player_challenge_finish")) {
 
                     }
 
