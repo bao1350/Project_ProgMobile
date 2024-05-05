@@ -277,6 +277,10 @@ public class BluetoothConnectionService {
                     Log.d(TAG, "InputStream: " + incomingMessage);
 
                     // Handle incoming message
+                    /*
+                    il faudrais avoir des messages avec un meilleur format (json ?)
+                    pour gérer les messages avec de la data (ex : selectedGame)
+                     */
                     if(incomingMessage == "start_mode_multi"){
 
                     } else if (incomingMessage == "other_player_lost") {

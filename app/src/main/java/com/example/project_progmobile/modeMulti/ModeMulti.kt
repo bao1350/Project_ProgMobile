@@ -86,6 +86,9 @@ class ModeMulti  : ComponentActivity() {
         // Vérifier s'il reste des jeux disponibles
 
         // Sélectionner un jeu aléatoire parmi les jeux disponibles restants
+        /*
+        il faudrait envoyer selectedGame à l'autre joueur, à voir où et comment le récupérer correctement
+         */
         selectedGame = availableGames.random()
         if(selectedGame == GamesQuizz::class.java){
             availableGames.remove(GamesQuizzMedium::class.java)
