@@ -5,19 +5,80 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/gameImageView"
+        android:id="@+id/gameImageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:src="@drawable/quiz_image"
+        android:src="@drawable/shake_image"
        />
-
-    <TextView
-        android:id="@+id/gameNameTextView"
+    <ImageView
+        android:id="@+id/gameImageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/gameImageView"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/motion_game_image"
+        />
+    <ImageView
+        android:id="@+id/gameImageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/tickgame_image"
+        /> <ImageView
+    android:id="@+id/gameImageView4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:src="@drawable/click_button_image"
+    /> <ImageView
+    android:id="@+id/gameImageView5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:src="@drawable/reflex_image"
+    />
+
+
+
+    <TextView
+        android:id="@+id/gameNameTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/gameImageView1"
         android:layout_marginStart="16dp"
         android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/gameNameTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/gameImageView2"
+        android:layout_marginStart="16dp"
+        android:textSize="18sp"/>
+    <TextView
+    android:id="@+id/gameNameTextView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toEndOf="@id/gameImageView3"
+    android:layout_marginStart="16dp"
+    android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/gameNameTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/gameImageView4"
+        android:layout_marginStart="16dp"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/gameNameTextView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/gameImageView5"
+        android:layout_marginStart="16dp"
+        android:textSize="18sp"/>
+
+
+
 
 </RelativeLayout>

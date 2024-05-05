@@ -20,12 +20,32 @@ class CustomAdapter(context: Context, games: List<Game>) :
             itemView = LayoutInflater.from(context).inflate(R.layout.item_game, parent, false)
         }
 
-        val gameNameTextView = itemView!!.findViewById<TextView>(R.id.gameNameTextView)
-        val gameImageView = itemView.findViewById<ImageView>(R.id.gameImageView)
+        val gameNameTextView1 = itemView!!.findViewById<TextView>(R.id.gameNameTextView1)
+        val gameImageView1 = itemView.findViewById<ImageView>(R.id.gameImageView1)
+        val gameNameTextView2 = itemView!!.findViewById<TextView>(R.id.gameNameTextView2)
+        val gameImageView2 = itemView.findViewById<ImageView>(R.id.gameImageView2)
+        val gameNameTextView3 = itemView!!.findViewById<TextView>(R.id.gameNameTextView3)
+        val gameImageView3 = itemView.findViewById<ImageView>(R.id.gameImageView3)
+        val gameNameTextView4 = itemView!!.findViewById<TextView>(R.id.gameNameTextView4)
+        val gameImageView4 = itemView.findViewById<ImageView>(R.id.gameImageView4)
+        val gameNameTextView5 = itemView!!.findViewById<TextView>(R.id.gameNameTextView5)
+        val gameImageView5 = itemView.findViewById<ImageView>(R.id.gameImageView5)
+
+
 
         game?.let {
-            gameNameTextView.text = it.name
-            gameImageView.setImageResource(it.imageResourceId)
+            gameNameTextView1.text = it.name
+            gameImageView1.setImageResource(it.imageResourceId)
+            gameNameTextView2.text = it.name
+            gameImageView2.setImageResource(it.imageResourceId)
+            gameNameTextView3.text = it.name
+            gameImageView3.setImageResource(it.imageResourceId)
+            gameNameTextView4.text = it.name
+            gameImageView4.setImageResource(it.imageResourceId)
+            gameNameTextView5.text = it.name
+            gameImageView5.setImageResource(it.imageResourceId)
+
+
         }
 
         return itemView

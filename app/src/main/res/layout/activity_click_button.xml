@@ -37,7 +37,7 @@
         android:id="@+id/tvInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="\nCliquez sur le bouton pour démarrer le jeu."
+        android:text="Le but du jeu est d'appuyer sur le bouton. Cliquez sur le bouton  pour gagner des points. Le bouton se déplace aléatoirement à chaque clic."
         android:layout_above="@id/btnPlay"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"

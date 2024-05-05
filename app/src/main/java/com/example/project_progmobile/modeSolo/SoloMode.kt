@@ -70,6 +70,7 @@ class SoloMode : ComponentActivity() {
 
         // Sélectionner un jeu aléatoire parmi les jeux disponibles restants
         selectedGame = availableGames.random()
+        availableGames.remove(selectedGame)
         if(selectedGame == GamesQuizz::class.java){
             availableGames.remove(GamesQuizzMedium::class.java)
             availableGames.remove(GamesQuizzHard::class.java)
@@ -103,6 +104,20 @@ class SoloMode : ComponentActivity() {
                         handleGameLoss()
                     }
                 }
+                GamesQuizzMedium::class.java -> {
+                    if (score > 10000) {
+                        showNextChallengeButton()
+                    } else {
+                        handleGameLoss()
+                    }
+                }
+                GamesQuizzHard::class.java -> {
+                    if (score > 8000) {
+                        showNextChallengeButton()
+                    } else {
+                        handleGameLoss()
+                    }
+                }
                 ReflexGames::class.java -> {
                     if (score1 < 500) {
                         showNextChallengeButton()
@@ -111,7 +126,7 @@ class SoloMode : ComponentActivity() {
                     }
                 }
                 TickGameActivity::class.java -> {
-                    if (score > 50) {
+                    if (score > 70) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()
@@ -132,7 +147,7 @@ class SoloMode : ComponentActivity() {
                     }
                 }
                 MotionGame::class.java ->{
-                    if(score>5){
+                    if(score>10){
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()
