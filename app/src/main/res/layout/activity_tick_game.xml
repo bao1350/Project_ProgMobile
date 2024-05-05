@@ -8,12 +8,13 @@
         android:id="@+id/instructionsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Appuie sur l'appareil le plus vite possible!"
+        android:text="Pour réussir le défi, tu dois réaliser un score supérieur à 80. Appuie sur l'appareil le plus vite possible!"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:textSize="18sp"
         android:textColor="@android:color/black"
-        android:padding="16dp"/>
+        android:padding="16dp"
+        android:textAlignment="center"/>
 
     <Button
         android:id="@+id/startButton"

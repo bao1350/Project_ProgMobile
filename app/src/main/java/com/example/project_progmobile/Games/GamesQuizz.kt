@@ -169,7 +169,6 @@ class GamesQuizz : ComponentActivity() {
     )
 
 
-
     // Define questions for each difficulty mode
     private val easyQuestions = listOf(
         Question(
@@ -313,9 +312,9 @@ class GamesQuizz : ComponentActivity() {
             2
         ),
         Question(
-            "Quelle sont les couleurs du drapeau italien?",
-            listOf("Vert,Blanc,Rouge", "Vert,Bleu,Rouge", "Jaune,Blanc,Rouge", "Vert,Noir,Rouge"),
-            0
+            "Quelle est la couleur du drapeau italien?",
+            listOf("Bleu", "Blanc", "Vert", "Rouge"),
+            3
         ),
         Question(
             "Quel est le fruit le plus consommé au monde?",
@@ -554,11 +553,7 @@ class GamesQuizz : ComponentActivity() {
             listOf("Stendhal", "Gustave Flaubert", "Honoré de Balzac", "Émile Zola"),
             0
         ),
-        Question(
-            "Quelle est la plus grande île du monde?",
-            listOf("Groenland", "Australie", "Borneo", "Madagascar"),
-            0
-        ),
+
         Question(
             "Quel est le plus grand désert du monde?",
             listOf("Sahara", "Gobi", "Kalahari", "Antarctique"),

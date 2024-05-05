@@ -13,6 +13,8 @@
         android:text="Vous avez gagné!"
         android:textSize="36sp"
         android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:textColor="@android:color/white"/> <!-- Texte en blanc pour contraster avec le fond coloré -->
 
 </RelativeLayout>

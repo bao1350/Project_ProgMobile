@@ -1,6 +1,7 @@
 package com.example.project_progmobile.Games
 
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
@@ -16,7 +17,7 @@ import com.example.project_progmobile.MainActivity
 import com.example.project_progmobile.R
 import kotlin.random.Random
 
-class Clickbutton : ComponentActivity() {
+class ClickButton : ComponentActivity() {
 
     private lateinit var btnPlay: Button
     private lateinit var btnClickHere: Button
@@ -28,7 +29,6 @@ class Clickbutton : ComponentActivity() {
     private lateinit var timer: CountDownTimer
     private var screenWidth: Int = 0
     private var screenHeight: Int = 0
-    private lateinit var alertDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +42,7 @@ class Clickbutton : ComponentActivity() {
         btnReturnToHome = findViewById(R.id.btnReturnToHome)
 
         // Obtenir les dimensions de l'écran
+
         val displayMetrics = resources.displayMetrics
         screenWidth = displayMetrics.widthPixels
         screenHeight = displayMetrics.heightPixels
@@ -63,8 +64,11 @@ class Clickbutton : ComponentActivity() {
         tvInstructions.text = "Cliquez sur le bouton pour gagner des points !"
         btnPlay.visibility = View.INVISIBLE
         btnClickHere.visibility = View.VISIBLE
-        tvInstructions.visibility=View.INVISIBLE
         btnReturnToHome.visibility=View.INVISIBLE
+        tvInstructions.visibility=View.INVISIBLE
+        tvScore.visibility=View.VISIBLE
+        tvTimer.visibility=View.VISIBLE
+
 
         // Timer pour le jeu
         timer = object : CountDownTimer(10000, 1000) {
@@ -86,9 +90,8 @@ class Clickbutton : ComponentActivity() {
         tvInstructions.text = "Votre score : $score. Cliquez sur Jouer pour rejouer."
         val resultIntent = Intent()
         resultIntent.putExtra("score", score)
-        setResult(RESULT_OK, resultIntent)
+        setResult(Activity.RESULT_OK, resultIntent)
         finish()
-        // Afficher une fenêtre contextuelle avec le score
 
     }
 
@@ -113,14 +116,5 @@ class Clickbutton : ComponentActivity() {
         btnClickHere.layoutParams = layoutParams
     }
 
-    private fun showScoreDialog(score: Int) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Score")
-        builder.setMessage("Vous avez obtenu un score de $score")
-        builder.setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
-            dialogInterface.dismiss()
-        }
-        alertDialog = builder.create()
-        alertDialog.show()
-    }
+
 }

@@ -14,7 +14,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/tvTimer"
@@ -24,7 +25,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/btnPlay"
@@ -37,11 +39,17 @@
         android:id="@+id/tvInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Le but du jeu est d'appuyer sur le bouton. Cliquez sur le bouton  pour gagner des points. Le bouton se déplace aléatoirement à chaque clic."
-        android:layout_above="@id/btnPlay"
+        android:text="Pour réussir le défi, tu dois avoir un score supérieur à 12. Le but du jeu est d'appuyer sur le bouton. Cliquez sur le bouton pour gagner des points. Le bouton se déplace aléatoirement à chaque clic."
+        android:textSize="20sp"
+        android:visibility="visible"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:visibility="visible"/>
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"/>
+
+
+
+
+
 
     <Button
         android:id="@+id/btnClickHere"
@@ -51,6 +59,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:visibility="invisible"/>
+
     <Button
         android:id="@+id/btnReturnToHome"
         android:layout_width="wrap_content"

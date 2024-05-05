@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import com.example.project_progmobile.Games.Clickbutton
+import com.example.project_progmobile.Games.ClickButton
 import com.example.project_progmobile.Games.GamesQuizz
 import com.example.project_progmobile.Games.GamesQuizzHard
 import com.example.project_progmobile.Games.GamesQuizzMedium
@@ -58,7 +58,7 @@ class SoloMode : ComponentActivity() {
         ReflexGames::class.java,
         TickGameActivity::class.java,
         ShakeChallengeActivity::class.java,
-        Clickbutton::class.java,
+        ClickButton::class.java,
         MotionGame::class.java,
         GamesQuizzHard::class.java,
         GamesQuizzMedium::class.java
@@ -119,27 +119,27 @@ class SoloMode : ComponentActivity() {
                     }
                 }
                 ReflexGames::class.java -> {
-                    if (score1 < 500) {
+                    if (score1 < 450) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()
                     }
                 }
                 TickGameActivity::class.java -> {
-                    if (score > 70) {
+                    if (score > 80) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()
                     }
                 }
                 ShakeChallengeActivity::class.java -> {
-                    if (score > 10) {
+                    if (score > 12) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()
                     }
                 }
-                Clickbutton::class.java -> {
+                ClickButton::class.java -> {
                     if(score >12){
                         showNextChallengeButton()
                     } else {
@@ -147,7 +147,7 @@ class SoloMode : ComponentActivity() {
                     }
                 }
                 MotionGame::class.java ->{
-                    if(score>10){
+                    if(score>8){
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()

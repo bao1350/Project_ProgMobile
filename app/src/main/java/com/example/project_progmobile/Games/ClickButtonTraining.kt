@@ -42,6 +42,7 @@ class ClickButtonTraining : ComponentActivity() {
         btnReturnToHome = findViewById(R.id.btnReturnToHome)
 
         // Obtenir les dimensions de l'écran
+
         val displayMetrics = resources.displayMetrics
         screenWidth = displayMetrics.widthPixels
         screenHeight = displayMetrics.heightPixels
@@ -65,6 +66,8 @@ class ClickButtonTraining : ComponentActivity() {
         btnClickHere.visibility = View.VISIBLE
         btnReturnToHome.visibility=View.INVISIBLE
         tvInstructions.visibility=View.INVISIBLE
+        tvScore.visibility=View.VISIBLE
+        tvTimer.visibility=View.VISIBLE
 
 
         // Timer pour le jeu

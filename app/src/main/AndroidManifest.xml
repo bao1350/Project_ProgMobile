@@ -68,7 +68,7 @@
             android:name=".Games.ClickButtonTraining"
             android:exported="false" />
         <activity
-            android:name=".Games.Clickbutton"
+            android:name=".Games.ClickButton"
             android:exported="false" />
         <activity
             android:name=".modeSolo.SoloMode"

@@ -35,10 +35,11 @@
         android:layout_below="@id/countdownTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Bienvenue dans le Shake Challenge !\n Secoue ton téléphone le plus vite possible"
+        android:text="Bienvenue dans le Shake Challenge, pour réussir le défi tu dois avoir un score supérieur à 15\n Secoue ton téléphone le plus vite possible"
         android:textSize="18sp"
         android:textAlignment="center"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        />
 
     <Button
         android:id="@+id/startButton"

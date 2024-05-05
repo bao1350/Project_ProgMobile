@@ -10,12 +10,15 @@
         android:id="@+id/instructionsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Appuyez et faites glisser pour déplacer le joueur. Atteignez le but pour gagner des points et évitez les obstacles!"
-        android:textSize="16sp"
+        android:text="Pour réussir le défi, tu dois avoir un score supérieur à 8. Appuyez et faites glisser pour déplacer le joueur. Atteignez le but pour gagner des points et évitez les obstacles!"
+        android:textSize="20sp"
         android:layout_gravity="start"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:visibility="visible"/>
+
+        android:visibility="visible"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"/>
 
     <!-- Player ImageView -->
     <ImageView

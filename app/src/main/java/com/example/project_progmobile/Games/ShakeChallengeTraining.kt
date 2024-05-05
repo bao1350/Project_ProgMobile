@@ -1,4 +1,5 @@
 package com.example.project_progmobile.Games
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
@@ -111,10 +112,19 @@ class ShakeChallengeTraining : ComponentActivity() {
         startButton.visibility = View.INVISIBLE
         isGameRunning = false
 
-        // Afficher le bouton "Rejouer"
-        btnReplay.visibility = View.VISIBLE
-
-
+        // Afficher le score final dans une fenêtre de dialogue
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setTitle("Fin du jeu")
+        alertDialog.setMessage("Votre score final est de $score points.")
+        alertDialog.setPositiveButton("OK") { dialog, which ->
+            // Réinitialiser le jeu
+            restartGame()
+        }
+        alertDialog.setOnCancelListener {
+            // Réinitialiser le jeu
+            restartGame()
+        }
+        alertDialog.show()
     }
 
 

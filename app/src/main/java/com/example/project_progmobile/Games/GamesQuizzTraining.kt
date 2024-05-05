@@ -559,11 +559,7 @@ class GamesQuizzTraining : ComponentActivity() {
             listOf("Stendhal", "Gustave Flaubert", "Honoré de Balzac", "Émile Zola"),
             0
         ),
-        Question(
-            "Quelle est la plus grande île du monde?",
-            listOf("Groenland", "Australie", "Borneo", "Madagascar"),
-            0
-        ),
+
         Question(
             "Quel est le plus grand désert du monde?",
             listOf("Sahara", "Gobi", "Kalahari", "Antarctique"),
