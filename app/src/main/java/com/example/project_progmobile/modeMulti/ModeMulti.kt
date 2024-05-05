@@ -33,6 +33,12 @@ class ModeMulti  : ComponentActivity() {
     private lateinit var mediaPlayerWin: MediaPlayer
     private var successfulChallenges = 0
 
+
+    private val startMsg = "start_mode_multi"
+    private val gameOverMsg = "other_player_lost"
+    private val challengeFinished = "other_player_challenge_finish"
+
+
     private val availableGames = mutableListOf<Class<*>>(
         GamesQuizz::class.java,
         ReflexGames::class.java,
@@ -59,7 +65,6 @@ class ModeMulti  : ComponentActivity() {
 
 
         btnStartChallenge.setOnClickListener {
-            val startMsg = "start_mode_multi"
             val bytes: ByteArray = startMsg.toByteArray(Charset.defaultCharset())
             bluetoothConnectionService.write(bytes)
             startRandomChallenge()
@@ -155,6 +160,11 @@ class ModeMulti  : ComponentActivity() {
     }
 
     private fun showNextChallengeButton() {
+        val bytes: ByteArray = challengeFinished.toByteArray(Charset.defaultCharset())
+        bluetoothConnectionService.write(bytes)
+
+        // Attendre de recevoir le message indiquand que le joueur adverse a fini
+
         successfulChallenges++
         if (successfulChallenges >= 3) {
             // Afficher l'écran de victoire lorsque le joueur réussit trois défis
@@ -176,6 +186,9 @@ class ModeMulti  : ComponentActivity() {
         // Afficher l'écran de fin du jeu avec le texte "Game Over"
         setContentView(R.layout.game_over_screen)
         mediaPlayerLoss.start()
+
+        val bytes: ByteArray = gameOverMsg.toByteArray(Charset.defaultCharset())
+        bluetoothConnectionService.write(bytes)
 
     }
 

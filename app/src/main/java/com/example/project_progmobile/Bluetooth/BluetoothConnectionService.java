@@ -275,9 +275,16 @@ public class BluetoothConnectionService {
                     bytes = mmInStream.read(buffer);
                     String incomingMessage = new String(buffer, 0, bytes);
                     Log.d(TAG, "InputStream: " + incomingMessage);
+
+                    // Handle incoming message
                     if(incomingMessage == "start_mode_multi"){
 
+                    } else if (incomingMessage == "other_player_lost") {
+
+                    } else if (incomingMessage == "other_player_challenge_finish") {
+
                     }
+
                     // Use the Handler to post the incoming message to the UI thread
                 } catch (IOException e) {
                     Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
