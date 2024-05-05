@@ -7,6 +7,8 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import java.io.IOException;
@@ -38,6 +40,7 @@ public class BluetoothConnectionService {
     static ProgressDialog mProgressDialog;
 
     private ConnectedThread mConnectedThread;
+
 
     public BluetoothConnectionService(Context context) {
         mContext = context;
@@ -153,12 +156,12 @@ public class BluetoothConnectionService {
                 Log.d(TAG, "run: ConnectThread connected.");
             } catch (IOException e) {
                 // Close the socket
-//                 try {
-//                    mmSocket.close();
-//                     Log.d(TAG, "run: Closed Socket.");
-//                 } catch (IOException e1) {
-//                     Log.e(TAG, "mConnectThread: run: Unable to close connection in socket " + e1.getMessage());
-//                 }
+                 try {
+                    mmSocket.close();
+                     Log.d(TAG, "run: Closed Socket.");
+                 } catch (IOException e1) {
+                     Log.e(TAG, "mConnectThread: run: Unable to close connection in socket " + e1.getMessage());
+                 }
                 Log.d(TAG, "run: ConnectThread: Could not connect to UUID: " + MY_UUID_INSECURE );
             }
 
@@ -166,12 +169,12 @@ public class BluetoothConnectionService {
             connected(mmSocket,mmDevice);
         }
         public void cancel() {
-//             try {
-//                 Log.d(TAG, "cancel: Closing Client Socket.");
-//                 mmSocket.close();
-//             } catch (IOException e) {
-//                 Log.e(TAG, "cancel: close() of mmSocket in Connectthread failed. " + e.getMessage());
-//             }
+             try {
+                 Log.d(TAG, "cancel: Closing Client Socket.");
+                 mmSocket.close();
+             } catch (IOException e) {
+                 Log.e(TAG, "cancel: close() of mmSocket in Connectthread failed. " + e.getMessage());
+             }
         }
     }
 
@@ -239,11 +242,6 @@ public class BluetoothConnectionService {
             //vérifier que la socket est connecté 
             if (!mmSocket.isConnected()) {
                 Log.d(TAG, "ConnectedThread: Socket is not connected.");
-                try {
-                    mmSocket.connect(); //pas connecté en gros
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
             } else {
                 Log.d(TAG, "ConnectedThread: Socket is connected.");
             }
@@ -272,6 +270,7 @@ public class BluetoothConnectionService {
                     bytes = mmInStream.read(buffer);
                     String incomingMessage = new String(buffer, 0, bytes);
                     Log.d(TAG, "InputStream: " + incomingMessage);
+                    // Use the Handler to post the incoming message to the UI thread
                 } catch (IOException e) {
                     Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
                     break;
@@ -292,9 +291,9 @@ public class BluetoothConnectionService {
 
         /* Call this from the main activity to shutdown the connection */
         public void cancel() {
-//             try {
-//                 mmSocket.close();
-//             } catch (IOException e) { }
+             try {
+                 mmSocket.close();
+             } catch (IOException e) { }
         }
     }
 
