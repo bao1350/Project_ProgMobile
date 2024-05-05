@@ -9,15 +9,16 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.project_progmobile.modeMulti.ModeMulti;
+import android.widget.Toast;
+
+import com.example.project_progmobile.modeMulti.ModeMulti;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.UUID;
-
-/**
- * Created by User on 12/21/2016.
- */
 
 public class BluetoothConnectionService {
     private static final String TAG = "BluetoothConnectionServ";
@@ -39,6 +40,9 @@ public class BluetoothConnectionService {
 
     private ConnectedThread mConnectedThread;
 
+    public boolean isConnected() {
+        return mConnectedThread != null && mConnectedThread.isAlive();
+    }
 
     public BluetoothConnectionService(Context context) {
         mContext = context;
@@ -222,6 +226,7 @@ public class BluetoothConnectionService {
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
 
+
         @SuppressLint("MissingPermission")
         public ConnectedThread(BluetoothSocket socket) {
             Log.d(TAG, "ConnectedThread: Starting.");
@@ -240,7 +245,9 @@ public class BluetoothConnectionService {
             //vérifier que la socket est connecté 
             if (!mmSocket.isConnected()) {
                 Log.d(TAG, "ConnectedThread: Socket is not connected.");
+                //Toast.makeText(mContext, "Bluetooth not connected", Toast.LENGTH_SHORT).show();
             } else {
+                //Toast.makeText(mContext, "Bluetooth connected", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "ConnectedThread: Socket is connected.");
             }
             try {
@@ -249,8 +256,8 @@ public class BluetoothConnectionService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Log.d(TAG, "InputStream: " + tmpIn);
-            Log.d(TAG, "OutputStream: " + tmpOut);
+            Log.d(TAG, "ConnectedThread - InputStream: " + tmpIn);
+            Log.d(TAG, "ConnectedThread - OutputStream: " + tmpOut);
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
@@ -268,6 +275,9 @@ public class BluetoothConnectionService {
                     bytes = mmInStream.read(buffer);
                     String incomingMessage = new String(buffer, 0, bytes);
                     Log.d(TAG, "InputStream: " + incomingMessage);
+                    if(incomingMessage == "start_mode_multi"){
+
+                    }
                     // Use the Handler to post the incoming message to the UI thread
                 } catch (IOException e) {
                     Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
@@ -320,27 +330,3 @@ public class BluetoothConnectionService {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

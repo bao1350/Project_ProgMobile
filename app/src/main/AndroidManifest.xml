@@ -86,6 +86,9 @@
             android:name=".modeSolo.SoloMode"
             android:exported="false" />
         <activity
+            android:name=".modeMulti.ModeMulti"
+            android:exported="false" />
+        <activity
             android:name=".Games.MotionGame"
             android:exported="false" />
         <activity

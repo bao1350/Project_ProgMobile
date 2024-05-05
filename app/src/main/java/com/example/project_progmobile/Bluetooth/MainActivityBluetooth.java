@@ -115,9 +115,6 @@ public class MainActivityBluetooth extends ComponentActivity implements AdapterV
         }
     };
 
-
-
-
     /**
      * Broadcast Receiver for listing devices that are not yet paired
      * -Executed by btnDiscover() method.
@@ -168,7 +165,6 @@ public class MainActivityBluetooth extends ComponentActivity implements AdapterV
             }
         }
     };
-
 
 
     @Override
@@ -250,7 +246,6 @@ public class MainActivityBluetooth extends ComponentActivity implements AdapterV
     }
 
     //create method for starting connection
-//***remember the conncction will fail and app will crash if you haven't paired first
     public void startConnection(){
         startBTConnection(mBTDevice,MY_UUID_INSECURE);
     }
