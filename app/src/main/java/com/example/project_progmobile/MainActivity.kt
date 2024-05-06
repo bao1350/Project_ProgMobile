@@ -21,7 +21,6 @@ class MainActivity : ComponentActivity() {
         val btnSolo = findViewById<Button>(R.id.btnSolo)
         val btnTraining = findViewById<Button>(R.id.btnTraining)
         val btnMulti = findViewById<Button>(R.id.btnMultiplayer)
-        val btnBluetooth = findViewById<Button>(R.id.btnBluetooth)
 
         // Définition des listeners de clic pour chaque bouton
         btnSolo.setOnClickListener {
@@ -36,9 +35,6 @@ class MainActivity : ComponentActivity() {
             startActivity(Intent(this, ModeMulti::class.java))
         }
 
-//        btnBluetooth.setOnClickListener{
-//            startActivity(Intent(this, MainActivityBluetooth::class.java))
-//        }
 
     }
 

@@ -126,7 +126,7 @@ class SoloMode : ComponentActivity() {
                     }
                 }
                 TickGameActivity::class.java -> {
-                    if (score > 80) {
+                    if (score > 100) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()

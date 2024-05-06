@@ -312,7 +312,7 @@ class GamesQuizz : ComponentActivity() {
             2
         ),
         Question(
-            "Quelle est la couleur du drapeau de Chine?",
+            "Quelle est la couleur du drapeau italien?",
             listOf("Bleu", "Blanc", "Vert", "Rouge"),
             3
         ),
@@ -454,7 +454,11 @@ class GamesQuizz : ComponentActivity() {
             listOf("Sahara", "Gobi", "Kalahari", "Arabie"),
             0
         ),
-
+        Question(
+            "Combien de continents y a-t-il?",
+            listOf("5", "6", "7", "8"),
+            1
+        ),
         Question(
             "Quelle est la devise de l'Allemagne?",
             listOf("Euro", "Mark", "Franc", "Dollar"),

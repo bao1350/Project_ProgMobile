@@ -65,8 +65,8 @@ class ModeMulti  : ComponentActivity() {
 
 
         btnStartChallenge.setOnClickListener {
-            val bytes: ByteArray = startMsg.toByteArray(Charset.defaultCharset())
-            bluetoothConnectionService.write(bytes)
+            /* val bytes: ByteArray = startMsg.toByteArray(Charset.defaultCharset())
+            bluetoothConnectionService.write(bytes)*/
             startRandomChallenge()
             btnStartChallenge.isEnabled = false // Désactiver le bouton de démarrage pendant le défi
         }
@@ -187,8 +187,8 @@ class ModeMulti  : ComponentActivity() {
 
     private fun handleGameLoss() {
         // Afficher l'écran de fin du jeu avec le texte "Game Over"
-        setContentView(R.layout.game_over_screen)
-        mediaPlayerLoss.start()
+        /*setContentView(R.layout.game_over_screen)
+        mediaPlayerLoss.start()*/
 
         val bytes: ByteArray = gameOverMsg.toByteArray(Charset.defaultCharset())
         bluetoothConnectionService.write(bytes)
