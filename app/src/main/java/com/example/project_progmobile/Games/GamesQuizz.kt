@@ -312,7 +312,7 @@ class GamesQuizz : ComponentActivity() {
             2
         ),
         Question(
-            "Quelle est la couleur du drapeau italien?",
+            "Quelle est la couleur du drapeau chinois?",
             listOf("Bleu", "Blanc", "Vert", "Rouge"),
             3
         ),
