@@ -119,7 +119,7 @@ class SoloMode : ComponentActivity() {
                     }
                 }
                 ReflexGames::class.java -> {
-                    if (score1 < 450) {
+                    if (score1 < 350) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()
@@ -133,14 +133,14 @@ class SoloMode : ComponentActivity() {
                     }
                 }
                 ShakeChallengeActivity::class.java -> {
-                    if (score > 12) {
+                    if (score > 20) {
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()
                     }
                 }
                 ClickButton::class.java -> {
-                    if(score >12){
+                    if(score >15){
                         showNextChallengeButton()
                     } else {
                         handleGameLoss()

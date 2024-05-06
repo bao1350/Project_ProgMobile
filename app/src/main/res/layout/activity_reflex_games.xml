@@ -57,7 +57,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:textAlignment="center"
-        android:text="Bienvenue dans le Réflexe Challenge, pour réussir le défi tu dois apuyez su rle bouton vert avec un temps de réaction de moins de  450 ms !\nAppuyez sur le bouton vert dès qu'il apparaît.\n"
+        android:text="Bienvenue dans le Réflexe Challenge, pour réussir le défi tu dois apuyez su rle bouton vert avec un temps de réaction de moins de  350 ms !\nAppuyez sur le bouton vert dès qu'il apparaît.\n"
         android:textSize="18sp"
         android:textColor="#FFFFFF"
        />

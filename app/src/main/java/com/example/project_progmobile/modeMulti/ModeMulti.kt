@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.example.project_progmobile.Bluetooth.BluetoothConnectionService
 import com.example.project_progmobile.Bluetooth.MainActivityBluetooth
-import com.example.project_progmobile.Games.Clickbutton
+import com.example.project_progmobile.Games.ClickButton
 import com.example.project_progmobile.Games.GamesQuizz
 import com.example.project_progmobile.Games.GamesQuizzHard
 import com.example.project_progmobile.Games.GamesQuizzMedium
@@ -44,7 +44,7 @@ class ModeMulti  : ComponentActivity() {
         ReflexGames::class.java,
         TickGameActivity::class.java,
         ShakeChallengeActivity::class.java,
-        Clickbutton::class.java,
+        ClickButton::class.java,
         MotionGame::class.java,
         GamesQuizzHard::class.java,
         GamesQuizzMedium::class.java
@@ -144,7 +144,7 @@ class ModeMulti  : ComponentActivity() {
                         handleGameLoss()
                     }
                 }
-                Clickbutton::class.java -> {
+                ClickButton::class.java -> {
                     if(score >12){
                         showNextChallengeButton()
                     } else {

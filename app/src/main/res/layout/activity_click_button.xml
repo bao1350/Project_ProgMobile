@@ -39,7 +39,7 @@
         android:id="@+id/tvInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pour réussir le défi, tu dois avoir un score supérieur à 12. Le but du jeu est d'appuyer sur le bouton. Cliquez sur le bouton pour gagner des points. Le bouton se déplace aléatoirement à chaque clic."
+        android:text="Pour réussir le défi, tu dois avoir un score supérieur à 15. Le but du jeu est d'appuyer sur le bouton. Cliquez sur le bouton pour gagner des points. Le bouton se déplace aléatoirement à chaque clic."
         android:textSize="20sp"
         android:visibility="visible"
         android:layout_centerHorizontal="true"
