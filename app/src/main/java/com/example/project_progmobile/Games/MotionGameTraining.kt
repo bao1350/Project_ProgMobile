@@ -26,7 +26,7 @@ class MotionGameTraining : ComponentActivity() {
     private lateinit var instructionsTextView:TextView
 
     private var score = 0
-    private var timeLeftInMillis: Long = 10000
+    private var timeLeftInMillis: Long = 20000
     private var timer: CountDownTimer? = null
 
     private val obstacleSize = 50 // Taille de l'obstacle (largeur ou hauteur)
