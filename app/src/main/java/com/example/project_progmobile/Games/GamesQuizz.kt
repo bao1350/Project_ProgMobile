@@ -454,11 +454,7 @@ class GamesQuizz : ComponentActivity() {
             listOf("Sahara", "Gobi", "Kalahari", "Arabie"),
             0
         ),
-        Question(
-            "Combien de continents y a-t-il?",
-            listOf("5", "6", "7", "8"),
-            1
-        ),
+
         Question(
             "Quelle est la devise de l'Allemagne?",
             listOf("Euro", "Mark", "Franc", "Dollar"),
